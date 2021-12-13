@@ -6,7 +6,7 @@
 /*   By: aborboll <aborboll@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/13 13:56:47 by aborboll          #+#    #+#             */
-/*   Updated: 2021/12/13 14:08:16 by aborboll         ###   ########.fr       */
+/*   Updated: 2021/12/13 14:11:48 by aborboll         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,8 @@ Data*	deserialize(uintptr_t raw)
 	return(reinterpret_cast<Data *>(raw));
 }
 
+
+// Docs: https://stackoverflow.com/questions/43342397/serialize-and-deserialize-datas-with-reinterpret-cast
 int	main(void)
 {
 	Data	salut;
