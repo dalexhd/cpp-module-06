@@ -6,7 +6,7 @@
 /*   By: aborboll <aborboll@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/13 13:56:47 by aborboll          #+#    #+#             */
-/*   Updated: 2021/12/13 15:02:35 by aborboll         ###   ########.fr       */
+/*   Updated: 2021/12/14 13:05:49 by aborboll         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,6 @@ int	main(void)
 	identify(p);
 	identify(p1);
 
-	std::cout << std::endl;
 	std::cout << "REFERENCE" << std::endl;
 	identify(*p);
 	identify(*p1);
