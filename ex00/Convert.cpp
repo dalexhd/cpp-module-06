@@ -6,7 +6,7 @@
 /*   By: aborboll <aborboll@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/06 19:18:37 by aborboll          #+#    #+#             */
-/*   Updated: 2021/12/14 11:49:03 by aborboll         ###   ########.fr       */
+/*   Updated: 2021/12/14 19:24:54 by aborboll         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,12 +71,15 @@ void	Convert::toFloat(double val)
 }
 
 
-void	Convert::toChar(double val)
+void	Convert::toChar(void)
 {
-	int c = static_cast<char>(val);
-	if (std::isinf(val) || std::isnan(val))
+	std::string	str = this->getValue();
+	char c;
+
+	if (str.length() > 1)
 		throw std::runtime_error("impossible");
-	else if (c < 32 || c > 126)
+	c = str.c_str()[0];
+	if (c < 32 || c > 126)
 		throw std::runtime_error("Non displayable");
 	else
 		this->setCharVal(c);
