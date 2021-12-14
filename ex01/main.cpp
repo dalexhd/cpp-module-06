@@ -6,7 +6,7 @@
 /*   By: aborboll <aborboll@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/13 13:56:47 by aborboll          #+#    #+#             */
-/*   Updated: 2021/12/13 14:11:48 by aborboll         ###   ########.fr       */
+/*   Updated: 2021/12/14 15:39:39 by aborboll         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,19 +19,23 @@ struct Data
 	std::string s2;
 };
 
+/*
+uintptr_t is an unsigned integer type that is capable of storing a data pointer. Which typically means that it's the same size as a pointer.
 
-uintptr_t	serialize(Data* ptr)
+It is optionally defined in C++11 and later standards.
+
+A common reason to want an integer type that can hold an architecture's pointer type is to perform integer-specific operations on a pointer, or to obscure the type of a pointer by providing it as an integer "handle".
+*/
+static	uintptr_t	serialize(Data* ptr)
 {
 	return(reinterpret_cast<uintptr_t>(ptr));
 }
 
-Data*	deserialize(uintptr_t raw)
+static	Data*	deserialize(uintptr_t raw)
 {
 	return(reinterpret_cast<Data *>(raw));
 }
 
-
-// Docs: https://stackoverflow.com/questions/43342397/serialize-and-deserialize-datas-with-reinterpret-cast
 int	main(void)
 {
 	Data	salut;
