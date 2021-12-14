@@ -6,7 +6,7 @@
 /*   By: aborboll <aborboll@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/06 19:15:33 by aborboll          #+#    #+#             */
-/*   Updated: 2021/12/13 13:54:58 by aborboll         ###   ########.fr       */
+/*   Updated: 2021/12/14 12:13:05 by aborboll         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,30 +15,13 @@
 */
 #include <iostream>
 #include <string.h>
-#include <math.h>
+#include <cmath>
 #include <limits.h>
 
-struct d_struct
+template <typename T>
+struct holder
 {
-	double		value;
-	std::string	err;
-};
-
-struct i_struct
-{
-	int			value;
-	std::string	err;
-};
-
-struct f_struct
-{
-	float		value;
-	std::string	err;
-};
-
-struct c_struct
-{
-	char		value;
+	T		value;
 	std::string	err;
 };
 
@@ -48,10 +31,10 @@ struct c_struct
 	{
 		private:
 			std::string value;
-			d_struct	d_val;
-			i_struct	i_val;
-			f_struct	f_val;
-			c_struct	c_val;
+			holder<double>	d_val;
+			holder<int>		i_val;
+			holder<float>	f_val;
+			holder<char>	c_val;
 		public:
 			Convert(void);
 			Convert(std::string value);

@@ -6,19 +6,27 @@
 /*   By: aborboll <aborboll@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/06 19:18:37 by aborboll          #+#    #+#             */
-/*   Updated: 2021/12/13 13:49:07 by aborboll         ###   ########.fr       */
+/*   Updated: 2021/12/14 11:49:03 by aborboll         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Convert.hpp"
 
 //Convert constructors & destructors
-Convert::Convert(void) : value(""), d_val(d_struct {.err = "\0"}), i_val(i_struct {.err = "\0"}), f_val(f_struct {.err = "\0"}), c_val(c_struct {.err = "\0"})
+Convert::Convert(void) : value("")
 {
+	d_val.err = "\0";
+	i_val.err = "\0";
+	f_val.err = "\0";
+	c_val.err = "\0";
 }
 
-Convert::Convert(std::string value) : value(value), d_val(d_struct {.err = "\0"}), i_val(i_struct {.err = "\0"}), f_val(f_struct {.err = "\0"}), c_val(c_struct {.err = "\0"})
+Convert::Convert(std::string value) : value(value)
 {
+	d_val.err = "\0";
+	i_val.err = "\0";
+	f_val.err = "\0";
+	c_val.err = "\0";
 }
 
 Convert::~Convert()
