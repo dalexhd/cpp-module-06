@@ -6,7 +6,7 @@
 /*   By: aborboll <aborboll@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/13 13:56:47 by aborboll          #+#    #+#             */
-/*   Updated: 2021/12/14 13:05:49 by aborboll         ###   ########.fr       */
+/*   Updated: 2021/12/16 13:11:27 by aborboll         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,32 +23,57 @@ static	int	randNumber(size_t min, size_t max)
 Base * generate(void)
 {
 	size_t	num = randNumber(1, 3);
+	Base	*base = NULL;
 
-	if (num == 1)
-		return dynamic_cast<Base*>(new A);
-	else if (num == 2)
-		return dynamic_cast<Base*>(new B);
-	return dynamic_cast<Base*>(new C);
+	try
+	{
+		if (num == 1)
+			base = dynamic_cast<Base *>(new A);
+		else if (num == 2)
+			base = dynamic_cast<Base *>(new B);
+		else if (num == 3)
+			base = dynamic_cast<Base *>(new C);
+		return (base);
+	}
+	catch(const std::exception& e)
+	{
+		std::cerr << e.what() << '\n';
+		return (NULL);
+	}
 }
 
 void	identify(Base* p)
 {
-	if (dynamic_cast<A *>(p))
-		std::cout << "A" << "\n";
-	else if (dynamic_cast<B *>(p))
-		std::cout << "B" << "\n";
-	else if (dynamic_cast<C *>(p))
-		std::cout << "C" << "\n";
+	try
+	{
+		if (dynamic_cast<A *>(p))
+			std::cout << "A" << "\n";
+		else if (dynamic_cast<B *>(p))
+			std::cout << "B" << "\n";
+		else if (dynamic_cast<C *>(p))
+			std::cout << "C" << "\n";
+	}
+	catch(const std::exception& e)
+	{
+		std::cerr << e.what() << '\n';
+	}
 }
 
 void	identify(Base& p)
 {
-	if (dynamic_cast<A *>(&p))
-		std::cout << "A" << "\n";
-	else if (dynamic_cast<B *>(&p))
-		std::cout << "B" << "\n";
-	else if (dynamic_cast<C *>(&p))
-		std::cout << "C" << "\n";
+	try
+	{
+		if (dynamic_cast<A *>(&p))
+			std::cout << "A" << "\n";
+		else if (dynamic_cast<B *>(&p))
+			std::cout << "B" << "\n";
+		else if (dynamic_cast<C *>(&p))
+			std::cout << "C" << "\n";
+	}
+	catch(const std::exception& e)
+	{
+		std::cerr << e.what() << '\n';
+	}
 }
 
 int	main(void)
