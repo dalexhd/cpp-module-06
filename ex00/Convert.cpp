@@ -6,7 +6,7 @@
 /*   By: aborboll <aborboll@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/06 19:18:37 by aborboll          #+#    #+#             */
-/*   Updated: 2021/12/14 19:24:54 by aborboll         ###   ########.fr       */
+/*   Updated: 2022/01/24 18:13:34 by aborboll         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,10 +39,27 @@ std::string	Convert::getValue(void) const
 	return (this->value);
 }
 
+std::string itoa(int a)
+{
+	if (a == 0)
+		return "0";
+	std::string res = "";
+	int tmp = a;
+	while (tmp != 0)
+	{
+		res = (char)(tmp % 10 + '0') + res;
+		tmp /= 10;
+	}
+	return res;
+}
+
 void	Convert::setValue(std::string val)
 {
-	this->value = val;
-	this->setDoubleVal(std::stod(val));
+	this->value = val.length() == 1 && std::isalpha(val[0]) ? itoa((double)val[0]) : val;
+	double tmp = std::stod(this->value);
+	if (!std::isinf(tmp) && !std::isnan(tmp) && (tmp > INT_MAX || tmp < INT_MIN))
+		throw std::runtime_error("impossible");
+	this->setDoubleVal(tmp);
 }
 
 // Convert
@@ -55,11 +72,9 @@ void	Convert::toInt(double val)
 		this->setIntVal(i);
 }
 
-
 void	Convert::toFloat(double val)
 {
 	int f = static_cast<float>(val);
-
 	if (std::isnan(val))
 		throw std::runtime_error("nanf");
 	if (std::isinf(val) && val > 0)
@@ -71,18 +86,17 @@ void	Convert::toFloat(double val)
 }
 
 
-void	Convert::toChar(void)
+void	Convert::toChar(double val)
 {
-	std::string	str = this->getValue();
 	char c;
 
-	if (str.length() > 1)
+	if (val >= 32 && val <= 126)
+		c = (char)val;
+	else if (this->value.length() > 1)
 		throw std::runtime_error("impossible");
-	c = str.c_str()[0];
-	if (c < 32 || c > 126)
-		throw std::runtime_error("Non displayable");
 	else
-		this->setCharVal(c);
+		throw std::runtime_error("Non displayable");
+	this->setCharVal(c);
 }
 
 // Set Err
